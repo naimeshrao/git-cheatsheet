@@ -61,5 +61,3 @@
 
     git show <hash> # See what & why
 ```
-
-
