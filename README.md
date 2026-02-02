@@ -18,9 +18,9 @@
     git config user.name
     git config user.email
 
-    git config --global --unset credential.helper # Removes saved Git credential helper
-    git config --global credential.helper wincred # Enables credential saving on Windows (--system)
-    git credential reject # Manually tells Git to FORGET stored credentials
+    git config --global --unset credential.helper # Removes saved Git cred helper
+    git config --global credential.helper wincred # Enables cred saving on Windows (--system)
+    git credential reject # Manually tells Git to FORGET stored creds
 ```
 
 ## 👉 Basic Daily Commands (Most Used)
@@ -107,10 +107,10 @@
     git reset —soft HEAD@{1}
 
     # 🟢 Revert (Create a new commit that undoes changes)
-    git revert D    # A → B → C → D → D' (D' is a new commit that cancels D)
+    git revert D    # A → ... → D → D' (D' is a new commit that cancels D)
 
     # 🟢 Mixed (Commit is undone, All changes remain, Files become unstaged)
-    git reset --mixed HEAD~1    # Commits Removed / Staging area Cleared / Working files kept
+    git reset --mixed HEAD~1    # Commits Removed / Staging Cleared / Kept files 
 
     # Senario: Message is wrong, Maybe you added extra files
 ```
@@ -191,14 +191,16 @@
     :q          # Quit (only if no changes)
     :wq         # or :x Save the file and exit Vim
     Esc         # Exit insert mode
+    ls -la      # Shows detailed list of all files
+    ls -l       # Simple List
 ```
 
 ## 👉 Common Commit Types
 
-- **feat:** New feature
-- **fix:** Bug fix
-- **docs:** Documentation changes / Storybook
-- **style:** Formatting (no logic change)
+- **feat:**     New feature
+- **fix:**      Bug fix
+- **docs:**     Documentation changes / Storybook
+- **style:**    Formatting (no logic change)
 - **refactor:** Code improvement without feature change
 
 
@@ -237,7 +239,7 @@
     # Create PR -> Code Review -> Final Merge to Main
 ```
 
-## 👉 Real Senarios 3 (Work on busy project)
+## 👉 Real Senarios 3 for Merge (Work on busy project)
 ```bash
     git checkout main
     git pull
@@ -259,4 +261,36 @@
     git push
 
     # Create PR -> Code Review -> Final Merge to Main
+```
+
+## 👉 Real Senarios 4 for Rebase
+```bash
+    git checkout main
+    git pull origin main
+    git checkout -b feature/your-task
+
+    # DURING DAY:
+    git add .
+    git commit -m "..."
+    git checkout main
+    git pull origin main
+    git checkout feature/your-task
+    git rebase main
+    git push origin feature/your-task --force-with-lease
+
+    # END OF DAY:
+    git checkout main
+    git pull origin main
+    git checkout feature/your-task
+    git rebase main
+    git push origin feature/your-task --force-with-lease
+
+    ## Create PR -> Code Review -> Final Merge to Main
+
+    # If conflicts occur → fix them →
+    git add .
+    git rebase --continue
+    git push origin feature/your-task --force-with-lease
+
+    git rebase --abort # If something goes wrong →
 ```
