@@ -1,8 +1,6 @@
-## 📌 Git Notes
+# 📌 Git Commands Cheat Sheet for Developers
 
----
-
-## 👉 Setup & Info Commands (Rarely Used)
+## 👉 Git Setup & Information Commands
 ```bash
     git --version
     git clean -fd # Clean Working Tree (Remove untracked files)
@@ -10,7 +8,7 @@
     git remote -v # Shows remote repository URLs is connected
 ```
 
-## 👉 Git Config
+## 👉 Git Configuration Commands
 ```bash
     git config --global user.name "Naimesh Barot"
     git config --global user.email "naimesh.b@email.com"
@@ -23,7 +21,7 @@
     git credential reject # Manually tells Git to FORGET stored creds
 ```
 
-## 👉 Basic Daily Commands (Most Used)
+## 👉 Most Used Daily Git Commands
 ```bash
     git clone <repository-url>
 
@@ -34,7 +32,7 @@
     git reset
 ```
 
-## 👉 Branch Management
+## 👉 Git Branch Management Commands
 ```bash
     git branch feature          # Existing Branch
     git checkout -b feature     # Create new and switch
@@ -58,7 +56,7 @@
     git commit --amend -m "New correct message"
 ```
 
-## 👉 Stash (Temporary Save)
+## 👉 Git Stash – Save Work Temporarily
 ```bash
     git stash
     git stash push -m "Stash Message"
@@ -72,7 +70,7 @@
     git stash show              # Show stash content in terminal
 ```
 
-## 👉 Cherry-Pick
+## 👉 Git Cherry-Pick Commands
 ```bash
     git cherry-pick <commit-hash>   # Single commit
     git cherry-pick <hash1> <hash2> # Cherry-pick multiple commits
@@ -84,7 +82,7 @@
     git cherry-pick --skip
 ```
 
-## 👉 Debugging & History
+## 👉 Git Debugging & History Commands
 ```bash
     git log
     git log --oneline
@@ -96,7 +94,7 @@
     git blame file.js   # Know who changed a line.
 ```
 
-## 👉 Rarely Used
+## 👉 Git Reset, Revert & Recovery
 ```bash
     # 🔴 Hard Reset (destructive, deletes changes)
     git reset --hard HEAD~1     # Previous commit in history
@@ -115,7 +113,7 @@
     # Senario: Message is wrong, Maybe you added extra files
 ```
 
-## 👉 Standard for Commit Messages / Naming Standards
+## 👉 Git Commit Message Standards
 ```bash
     # Commit Message
     feat: add login API integration 
@@ -126,7 +124,7 @@
     release/v1.2.0
 ```
 
-## 👉 Most-useful Commands
+## 👉 Most Useful Development Commands
 ```bash
     node -v # Node.js version
     npm -v  # Check npm version
@@ -195,7 +193,7 @@
     ls -l       # Simple List
 ```
 
-## 👉 Common Commit Types
+## 👉 Commit Message Standards
 
 - **feat:**     New feature
 - **fix:**      Bug fix
@@ -204,7 +202,7 @@
 - **refactor:** Code improvement without feature change
 
 
-## 👉 Real Senarios 1
+## 👉 Scenario 1 – Working on a Feature Branch
 ```bash
     git checkout feature-login
     git pull origin feature-login
@@ -214,7 +212,7 @@
     git pull origin main    # You are on feature-login but want latest from main
 ```
 
-## 👉 Real Senarios 2 (Make multiple commits merge)
+## 👉 Scenario 2 – Multiple Commits & PR Workflow
 ```bash
     git checkout main
     git pull origin main
@@ -239,7 +237,7 @@
     # Create PR -> Code Review -> Final Merge to Main
 ```
 
-## 👉 Real Senarios 3 for Merge (Work on busy project)
+## 👉 Scenario 3 – Busy Project Merge Flow
 ```bash
     git checkout main
     git pull
@@ -263,7 +261,7 @@
     # Create PR -> Code Review -> Final Merge to Main
 ```
 
-## 👉 Real Senarios 4 for Rebase
+## 👉 Scenario 4 – Rebase Workflow (Professional Teams)
 ```bash
     git checkout main
     git pull origin main
