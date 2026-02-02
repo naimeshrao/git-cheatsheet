@@ -193,7 +193,7 @@
     ls -l       # Simple List
 ```
 
-## 👉 Commit Message Standards
+## 📝 Commit Message Standards
 
 - **feat:**     New feature
 - **fix:**      Bug fix
@@ -202,7 +202,7 @@
 - **refactor:** Code improvement without feature change
 
 
-## 👉 Scenario 1 – Working on a Feature Branch
+## 🎲 Scenario 1 – Working on a Feature Branch
 ```bash
     git checkout feature-login
     git pull origin feature-login
@@ -212,7 +212,7 @@
     git pull origin main    # You are on feature-login but want latest from main
 ```
 
-## 👉 Scenario 2 – Multiple Commits & PR Workflow
+## 🎲 Scenario 2 – Multiple Commits & PR Workflow
 ```bash
     git checkout main
     git pull origin main
@@ -237,7 +237,7 @@
     # Create PR -> Code Review -> Final Merge to Main
 ```
 
-## 👉 Scenario 3 – Busy Project Merge Flow
+## 🎲 Scenario 3 – Busy Project Merge Flow
 ```bash
     git checkout main
     git pull
@@ -261,7 +261,7 @@
     # Create PR -> Code Review -> Final Merge to Main
 ```
 
-## 👉 Scenario 4 – Rebase Workflow (Professional Teams)
+## 🎲 Scenario 4 – Rebase Workflow (Professional Teams)
 ```bash
     git checkout main
     git pull origin main
