@@ -2,7 +2,7 @@
 
 ---
 
-## Setup & Info Commands (Rarely Used)
+## 👉 Setup & Info Commands (Rarely Used)
 ```bash
     git --version
     git clean -fd # Clean Working Tree (Remove untracked files)
@@ -10,7 +10,7 @@
     git remote -v # Shows remote repository URLs is connected
 ```
 
-## Git Config
+## 👉 Git Config
 ```bash
     git config --global user.name "Naimesh Barot"
     git config --global user.email "naimesh.b@email.com"
@@ -18,12 +18,12 @@
     git config user.name
     git config user.email
 
-    git config --global --unset credential.helper # REMOVES (deletes) the credential helper setting from Git
-    git config --global credential.helper wincred # or --system to ENABLES credential saving on Windows
+    git config --global --unset credential.helper # Removes saved Git credential helper
+    git config --global credential.helper wincred # Enables credential saving on Windows (--system)
     git credential reject # Manually tells Git to FORGET stored credentials
 ```
 
-## Basic Daily Commands (Most Used)
+## 👉 Basic Daily Commands (Most Used)
 ```bash
     git clone <repository-url>
 
@@ -34,7 +34,7 @@
     git reset
 ```
 
-## Branch Management
+## 👉 Branch Management
 ```bash
     git branch feature          # Existing Branch
     git checkout -b feature     # Create new and switch
@@ -51,14 +51,14 @@
 
     git branch -d feature                   # Delete Branch
     git push origin --delete feature        # Delete Remote Branch
-    git push --set-upstream origin feature  # or -u Push the branch to GitHub & set the default for future pulls and pushes. 
+    git push --set-upstream origin feature  # or -u Push to GitHub and set as default upstream. 
 
     # Fix last commit message/code
     git commit --amend 
     git commit --amend -m "New correct message"
 ```
 
-## Stash (Temporary Save)
+## 👉 Stash (Temporary Save)
 ```bash
     git stash
     git stash push -m "Stash Message"
@@ -72,7 +72,7 @@
     git stash show              # Show stash content in terminal
 ```
 
-## Cherry-Pick
+## 👉 Cherry-Pick
 ```bash
     git cherry-pick <commit-hash>   # Single commit
     git cherry-pick <hash1> <hash2> # Cherry-pick multiple commits
@@ -84,7 +84,7 @@
     git cherry-pick --skip
 ```
 
-## Debugging & History
+## 👉 Debugging & History
 ```bash
     git log
     git log --oneline
@@ -96,7 +96,7 @@
     git blame file.js   # Know who changed a line.
 ```
 
-## Rarely Used
+## 👉 Rarely Used
 ```bash
     # 🔴 Hard Reset (destructive, deletes changes)
     git reset --hard HEAD~1     # Previous commit in history
@@ -115,17 +115,7 @@
     # Senario: Message is wrong, Maybe you added extra files
 ```
 
-## Real Senarios 1
-```bash
-    git checkout feature-login
-    git pull origin feature-login
-
-    git pull
-
-    git pull origin main    # You are on feature-login but want latest from main
-```
-
-## Standard for Commit Messages / Naming Standards
+## 👉 Standard for Commit Messages / Naming Standards
 ```bash
     # Commit Message
     feat: add login API integration 
@@ -136,15 +126,7 @@
     release/v1.2.0
 ```
 
-## Common Commit Types
-
-**feat:** New feature
-**fix:** Bug fix
-**docs:** Documentation changes / Storybook
-**style:** Formatting (no logic change)
-**refactor:** Code improvement without feature change
-
-## Most-useful Commands
+## 👉 Most-useful Commands
 ```bash
     node -v # Node.js version
     npm -v  # Check npm version
@@ -169,23 +151,6 @@
     rm package-lock.json
     npm cache clean --force
 
-    # Terminal Navigation
-    clear       # Clear Terminal
-    ls          # List Files
-    mkdir test  # Create folder
-    rm file.txt # Delete file
-    rm -rf dir  # Delete folder forcefully
-    cd folder   # Go into folder
-    cd ..       # Go back
-    cd ~        # Home directory
-    cd d:       # Change Drive
-    cd u        # Tab to select drive
-    pwd         # Show Current Directory
-    env         # Show environment variables
-    :q          # Quit (only if no changes)
-    :wq         # or :x Save the file and exit Vim
-    Esc         # Exit insert mode
-
     # React / Frontend
     npm start
     npm run dev
@@ -209,4 +174,89 @@
     npm run typecheck   # Run TypeScript type checking
     npm run deploy      # Deploy project to hosting (Netlify/Vercel etc.)
     npm run test        # Run tests (Jest, RTL, Cypress)
+
+    # Terminal Navigation
+    clear       # Clear Terminal
+    ls          # List Files
+    mkdir test  # Create folder
+    rm file.txt # Delete file
+    rm -rf dir  # Delete folder forcefully
+    cd folder   # Go into folder
+    cd ..       # Go back
+    cd ~        # Home directory
+    cd d:       # Change Drive
+    cd u        # Tab to select drive
+    pwd         # Show Current Directory
+    env         # Show environment variables
+    :q          # Quit (only if no changes)
+    :wq         # or :x Save the file and exit Vim
+    Esc         # Exit insert mode
+```
+
+## 👉 Common Commit Types
+
+- **feat:** New feature
+- **fix:** Bug fix
+- **docs:** Documentation changes / Storybook
+- **style:** Formatting (no logic change)
+- **refactor:** Code improvement without feature change
+
+
+## 👉 Real Senarios 1
+```bash
+    git checkout feature-login
+    git pull origin feature-login
+
+    git pull
+
+    git pull origin main    # You are on feature-login but want latest from main
+```
+
+## 👉 Real Senarios 2 (Make multiple commits merge)
+```bash
+    git checkout main
+    git pull origin main
+    git checkout -b feature/profile
+
+    git commit -m "feat: create profile UI"
+    git commit -m "feat: integrate profile API"
+    git commit -m "fix: validation issue"
+
+    # Keep Branch Updated With Main
+    git checkout main
+    git pull origin main
+    git checkout feature/profile
+    git merge main
+
+    # Resolve conflicts if any
+    git commit -m "fix: resolve merge conflicts"
+
+    # Push Feature Branch
+    git push origin feature/profile
+
+    # Create PR -> Code Review -> Final Merge to Main
+```
+
+## 👉 Real Senarios 3 (Work on busy project)
+```bash
+    git checkout main
+    git pull
+    git checkout -b feature/login
+
+    # DURING DAY (REPEAT):
+    git commit ...
+    git checkout main
+    git pull
+    git checkout feature/login
+    git merge main
+    git push
+
+    # END OF DAY:
+    git checkout main
+    git pull
+    git checkout feature
+    git merge main
+    git push
+
+    # Create PR -> Code Review -> Final Merge to Main
 ```
