@@ -205,6 +205,29 @@
     ls -l       # Simple List
 ```
 
+## 👉 Project Cleanup Windows
+
+```bash
+    # Cleanup old build + cache + dependencies
+    Remove-Item -Recurse -Force dist
+    Remove-Item -Force tsconfig*.tsbuildinfo
+    Remove-Item -Recurse -Force node_modules
+
+    # Compact
+    Remove-Item -Recurse -Force dist, node_modules -ErrorAction SilentlyContinue
+    Remove-Item -Force tsconfig*.tsbuildinfo -ErrorAction SilentlyContinue
+
+    # Fresh install & production build
+    npm install
+    npm run build
+
+    # Install auto clean setup
+    npm install rimraf --save-dev
+    # Add script in package.json -> scripts
+    # "clean": "rimraf dist node_modules tsconfig*.tsbuildinfo"
+    npm run clean
+```
+
 ## 📝 Commit Message Standards
 
 - **feat:** New feature
